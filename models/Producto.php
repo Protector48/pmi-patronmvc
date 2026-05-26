@@ -1,7 +1,7 @@
 <?php
 
 
-require_once './conexion.php';// Incluye la clase de conexión a la base de datos
+require_once './conexion.php';//Para poder hacer persistencia a la DB
 class Producto{
     private $conexion;
     public function __construct()
@@ -10,9 +10,9 @@ class Producto{
     }
     public function Listar()
     {
-        $sql = "SELECT * FROM productos";
-        $stmt = $this->conexion->conectar()->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $sql = "SELECT * FROM productos";// Consulta SQL para obtener todos los productos
+        $stmt = $this->conexion->conectar()->prepare($sql);// Prepara la consulta SQL
+        $stmt->execute();// Ejecuta la consulta SQL
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);// Devuelve los resultados como un array asociativo
     }
 }
